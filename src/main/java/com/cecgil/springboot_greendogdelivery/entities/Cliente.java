@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-public class Client {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +31,14 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Order> orders;
 
-	public Client(Long id,String nome,String endereco) {
+	public Cliente(Long id,String nome,String endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 	}
 
-	public Client() {}
+	public Cliente() {}
 
 	public Long getId() {
 		return id;
@@ -103,7 +103,7 @@ public class Client {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Client other = (Client) obj;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

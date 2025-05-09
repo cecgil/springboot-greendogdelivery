@@ -24,7 +24,7 @@ public class Order {
 	private Long id;
 
 	@ManyToOne(optional = true)
-	private Client client;
+	private Cliente client;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<ItemOrder> itens;
@@ -37,7 +37,7 @@ public class Order {
 
 	public Order() {}
 
-	public Order(Long id, Client client, List<ItemOrder> itens, Double valorTotal) {
+	public Order(Long id, Cliente client, List<ItemOrder> itens, Double valorTotal) {
 		super();
 		this.id = id;
 		this.client = client;
@@ -54,11 +54,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public Client getClient() {
+	public Cliente getClient() {
 		return client;
 	}
 
-	public void setCliente(Client client) {
+	public void setCliente(Cliente client) {
 		this.client = client;
 	}
 

@@ -8,18 +8,18 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.cecgil.springboot_greendogdelivery.entities.Client;
+import com.cecgil.springboot_greendogdelivery.entities.Cliente;
 import com.cecgil.springboot_greendogdelivery.entities.ItemOrder;
 import com.cecgil.springboot_greendogdelivery.entities.Order;
-import com.cecgil.springboot_greendogdelivery.repositories.ClientRepository;
+import com.cecgil.springboot_greendogdelivery.repositories.ClienteRepository;
 
 @Component
 public class RepositoryTest implements ApplicationRunner {
 
     Logger logger = LoggerFactory.getLogger(ApplicationRunner.class);
-    private final ClientRepository clientRepository;
+    private final ClienteRepository clientRepository;
 
-    public RepositoryTest(ClientRepository clientRepository) {
+    public RepositoryTest(ClienteRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -28,10 +28,10 @@ public class RepositoryTest implements ApplicationRunner {
         logger.info(">>> Iniciando carga de dados...");
 
         var fernando = clientRepository.findById(11L)
-                .orElse(new Client(null, "Carlos", "Caxias"));
+                .orElse(new Cliente(null, "Carlos", "Caxias"));
 
         var zePequeno = clientRepository.findById(22L)
-                .orElse(new Client(null, "Teste", "Cidade de Deus"));
+                .orElse(new Cliente(null, "Teste", "Cidade de Deus"));
 
         // Pedido do Fernando
         var pedidoDoFernando = new Order();
