@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 
+
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -53,6 +54,22 @@ public class ClienteController {
 		redirect.addFlashAttribute("globalMessage","Cliente gravado com sucesso");
 		return new ModelAndView("redirect:/clientes/{cliente.id}","cliente.id",cliente.getId());
 	}
+
+    @GetMapping("/alterar/{id}")
+    public ModelAndView alterarForm(@PathVariable("id") Cliente cliente) {
+        return new ModelAndView("clientes/form", "cliente", cliente);
+    }
+
+    @GetMapping("/remover/{id}")
+    public ModelAndView remover(@PathVariable("id") Long id, RedirectAttributes redirect) {
+        this.clienteRepository.deleteById(id);
+        var clientes = this.clienteRepository.findAll();
+        var mv = new ModelAndView("clientes/list", "clientes", clientes);
+        mv.addObject("globalMessage", "Cliente removido com sucesso");
+        return mv;
+    }
+    
+    
     
     
     
